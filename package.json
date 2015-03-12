@@ -1,6 +1,6 @@
 {
   "name": "set-immediate-shim",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple setImmediate shim",
   "license": "MIT",
   "repository": "sindresorhus/set-immediate-shim",
