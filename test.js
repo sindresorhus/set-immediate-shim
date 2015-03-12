@@ -18,3 +18,18 @@ test(function (t) {
 
 	t.assert(!called);
 });
+
+test(function (t) {
+	// force the shim
+	var _ = setImmediate;
+	setImmediate = null;
+	var setImmediateShim = requireUncached('./');
+	setImmediate = _;
+
+	setImmediateShim(function (a, b) {
+		var max = Math.max(a, b);
+		t.assert(max === 5);
+		t.end();
+	}, 3, 5);
+
+});
