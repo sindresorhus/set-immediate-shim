@@ -26,6 +26,11 @@ console.log('1');
 ```
 
 
+## Related
+
+- [immediate-promise](https://github.com/sindresorhus/immediate-promise) - Returns a promise resolved in the next event loop - think `setImmediate()`
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
