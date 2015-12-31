@@ -2,7 +2,7 @@
 var test = require('ava');
 var requireUncached = require('require-uncached');
 
-test('shim', function (t) {
+test.cb('shim', function (t) {
 	var called = false;
 
 	// force the shim
@@ -16,10 +16,10 @@ test('shim', function (t) {
 		t.end();
 	});
 
-	t.assert(!called);
+	t.false(called);
 });
 
-test('pass rest arguments', function (t) {
+test.cb('pass rest arguments', function (t) {
 	// force the shim
 	var _ = setImmediate;
 	setImmediate = null;
@@ -27,8 +27,8 @@ test('pass rest arguments', function (t) {
 	setImmediate = _;
 
 	setImmediateShim(function (a, b) {
-		t.assert(a === 3);
-		t.assert(b === 5);
+		t.is(a, 3);
+		t.is(b, 5);
 		t.end();
 	}, 3, 5);
 });
