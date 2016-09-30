@@ -1,6 +1,6 @@
 # set-immediate-shim [![Build Status](https://travis-ci.org/sindresorhus/set-immediate-shim.svg?branch=master)](https://travis-ci.org/sindresorhus/set-immediate-shim)
 
-> Simple [`setImmediate`](https://developer.mozilla.org/en-US/docs/Web/API/Window.setImmediate) shim
+> Simple [`setImmediate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate) [ponyfill](https://ponyfill.com)
 
 
 ## Install
@@ -13,9 +13,9 @@ $ npm install --save set-immediate-shim
 ## Usage
 
 ```js
-var setImmediateShim = require('set-immediate-shim');
+const setImmediateShim = require('set-immediate-shim');
 
-setImmediateShim(function () {
+setImmediateShim(() => {
 	console.log('2');
 });
 
@@ -28,9 +28,9 @@ console.log('1');
 
 ## Related
 
-- [immediate-promise](https://github.com/sindresorhus/immediate-promise) - Returns a promise resolved in the next event loop - think `setImmediate()`
+- [p-immediate](https://github.com/sindresorhus/p-immediate) - Returns a promise resolved in the next event loop - think `setImmediate()`
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

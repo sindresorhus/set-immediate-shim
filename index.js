@@ -1,4 +1,6 @@
 'use strict';
+/* eslint-disable func-names */
+
 module.exports = typeof setImmediate === 'function' ? setImmediate :
 	function setImmediate() {
 		var args = [].slice.apply(arguments);

@@ -1,17 +1,17 @@
-'use strict';
-var test = require('ava');
-var requireUncached = require('require-uncached');
+/* eslint-disable no-global-assign, no-native-reassign */
+import test from 'ava';
+import requireUncached from 'require-uncached';
 
-test.cb('shim', function (t) {
-	var called = false;
+test.cb('shim', t => {
+	let called = false;
 
 	// force the shim
-	var _ = setImmediate;
+	const _ = setImmediate;
 	setImmediate = null;
-	var setImmediateShim = requireUncached('./');
+	const setImmediateShim = requireUncached('./');
 	setImmediate = _;
 
-	setImmediateShim(function () {
+	setImmediateShim(() => {
 		called = true;
 		t.end();
 	});
@@ -19,14 +19,14 @@ test.cb('shim', function (t) {
 	t.false(called);
 });
 
-test.cb('pass rest arguments', function (t) {
+test.cb('pass rest arguments', t => {
 	// force the shim
-	var _ = setImmediate;
+	const _ = setImmediate;
 	setImmediate = null;
-	var setImmediateShim = requireUncached('./');
+	const setImmediateShim = requireUncached('./');
 	setImmediate = _;
 
-	setImmediateShim(function (a, b) {
+	setImmediateShim((a, b) => {
 		t.is(a, 3);
 		t.is(b, 5);
 		t.end();
