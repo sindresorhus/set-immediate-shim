@@ -1,9 +1,5 @@
 'use strict';
-/* eslint-disable func-names */
-
-module.exports = typeof setImmediate === 'function' ? setImmediate :
-	function setImmediate() {
-		var args = [].slice.apply(arguments);
-		args.splice(1, 0, 0);
-		setTimeout.apply(null, args);
-	};
+module.exports = typeof setImmediate === 'function' ? setImmediate : (...args) => {
+	args.splice(1, 0, 0);
+	setTimeout(...args);
+};

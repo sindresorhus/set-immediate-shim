@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save set-immediate-shim
+$ npm install set-immediate-shim
 ```
 
 

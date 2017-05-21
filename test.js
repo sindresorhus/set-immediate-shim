@@ -1,14 +1,14 @@
 /* eslint-disable no-global-assign, no-native-reassign */
 import test from 'ava';
-import requireUncached from 'require-uncached';
+import importFresh from 'import-fresh';
 
 test.cb('shim', t => {
 	let called = false;
 
-	// force the shim
+	// Force the shim
 	const _ = setImmediate;
 	setImmediate = null;
-	const setImmediateShim = requireUncached('./');
+	const setImmediateShim = importFresh('.');
 	setImmediate = _;
 
 	setImmediateShim(() => {
@@ -20,10 +20,10 @@ test.cb('shim', t => {
 });
 
 test.cb('pass rest arguments', t => {
-	// force the shim
+	// Force the shim
 	const _ = setImmediate;
 	setImmediate = null;
-	const setImmediateShim = requireUncached('./');
+	const setImmediateShim = importFresh('.');
 	setImmediate = _;
 
 	setImmediateShim((a, b) => {
