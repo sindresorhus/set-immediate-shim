@@ -1,4 +1,4 @@
-/* eslint-disable no-global-assign, no-native-reassign */
+/* eslint-disable no-global-assign */
 import test from 'ava';
 import importFresh from 'import-fresh';
 
