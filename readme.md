@@ -1,4 +1,4 @@
-# set-immediate-shim [![Build Status](https://travis-ci.com/sindresorhus/set-immediate-shim.svg?branch=master)](https://travis-ci.com/github/sindresorhus/set-immediate-shim)
+# set-immediate-shim
 
 > Simple [`setImmediate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate) [ponyfill](https://ponyfill.com)
 
