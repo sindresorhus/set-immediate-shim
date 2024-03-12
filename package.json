@@ -4,13 +4,20 @@
 	"description": "Simple setImmediate shim",
 	"license": "MIT",
 	"repository": "sindresorhus/set-immediate-shim",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
 	"engines": {
-		"node": ">=8"
+		"node": ">=18"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -28,8 +35,7 @@
 		"ponyfill"
 	],
 	"devDependencies": {
-		"ava": "^2.3.0",
-		"import-fresh": "^3.1.0",
-		"xo": "^0.24.0"
+		"ava": "^6.1.2",
+		"xo": "^0.58.0"
 	}
 }

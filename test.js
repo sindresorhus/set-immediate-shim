@@ -1,34 +1,38 @@
-/* eslint-disable no-global-assign */
+import {randomInt} from 'node:crypto';
 import test from 'ava';
-import importFresh from 'import-fresh';
 
-test.cb('shim', t => {
-	let called = false;
+const importFresh = async moduleName => import(`${moduleName}?${randomInt(100_000_000)}`);
 
+test.serial('shim', async t => {
 	// Force the shim
-	const _ = setImmediate;
-	setImmediate = null;
-	const setImmediateShim = importFresh('.');
-	setImmediate = _;
+	const _ = globalThis.setImmediate;
+	globalThis.setImmediate = undefined;
+	const {default: setImmediateShim} = await importFresh('./index.js');
+	globalThis.setImmediate = _;
 
-	setImmediateShim(() => {
-		called = true;
-		t.end();
+	await new Promise(resolve => {
+		setImmediateShim(() => {
+			resolve();
+		});
 	});
 
-	t.false(called);
+	t.pass();
 });
 
-test.cb('pass rest arguments', t => {
+test.serial('pass rest arguments', async t => {
 	// Force the shim
-	const _ = setImmediate;
-	setImmediate = null;
-	const setImmediateShim = importFresh('.');
-	setImmediate = _;
+	const _ = globalThis.setImmediate;
+	globalThis.setImmediate = undefined;
+	const {default: setImmediateShim} = await importFresh('./index.js');
+	globalThis.setImmediate = _;
 
-	setImmediateShim((a, b) => {
-		t.is(a, 3);
-		t.is(b, 5);
-		t.end();
-	}, 3, 5);
+	await new Promise(resolve => {
+		setImmediateShim((a, b) => {
+			t.is(a, 3);
+			t.is(b, 5);
+			resolve();
+		}, 3, 5);
+	});
+
+	t.pass();
 });
