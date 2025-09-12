@@ -2,7 +2,7 @@
 
 > Simple [`setImmediate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate) [ponyfill](https://ponyfill.com)
 
-Note: This shim is [quite inefficient](https://github.com/sindresorhus/set-immediate-shim/issues/4).
+The shim uses the native `setImmediate` when available (Node.js), falls back to [`MessageChannel`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel) for better performance in environments that support it (modern browsers, Deno), and uses `setTimeout` with zero delay as a last resort.
 
 ## Install
 
