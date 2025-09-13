@@ -27,7 +27,7 @@ const setImmediate = (callback, ...arguments_) => {
 
 		port1.start();
 
-		// Prevent Node.js from hanging
+		// Prevent process from not closing
 		if (typeof port1.unref === 'function') {
 			port1.unref();
 		}
@@ -41,9 +41,10 @@ const setImmediate = (callback, ...arguments_) => {
 	// Use MessageChannel if available, otherwise setTimeout
 	if (messageChannelSetImmediate) {
 		messageChannelSetImmediate(callback, ...arguments_);
-	} else {
-		setTimeout(callback, 0, ...arguments_);
+		return;
 	}
+
+	setTimeout(callback, 0, ...arguments_);
 };
 
 export default setImmediate;
